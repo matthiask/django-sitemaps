@@ -22,6 +22,9 @@ setup(
     license='BSD License',
     platforms=['OS Independent'],
     py_modules=['django_sitemaps'],
+    install_requires=[
+        'lxml',
+    ],
     classifiers=[
         # 'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
