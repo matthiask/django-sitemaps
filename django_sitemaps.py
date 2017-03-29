@@ -9,6 +9,9 @@ from django.http import HttpResponse
 from django.utils.http import http_date
 
 
+__all__ = ('Sitemap',)
+
+
 S = ElementMaker(
     namespace='http://www.sitemaps.org/schemas/sitemap/0.9',
     nsmap={

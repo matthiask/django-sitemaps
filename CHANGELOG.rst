@@ -5,7 +5,8 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
-- Mention the ``lxml`` dependency.
+- Added the ``lxml`` dependency to ``install_requires``.
+- Added documentation.
 
 
 `1.0`_ (2017-03-29)
