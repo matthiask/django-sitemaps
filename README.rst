@@ -58,11 +58,35 @@ View::
 
 URLconf::
 
+    from django_sitemaps import robots_txt
     from app.views import sitemap
 
     urlpatterns = [
-        url(r'^sitemap\.xml', sitemap),
+        url(r'^sitemap\.xml$', sitemap),
+        url(r'^robots\.txt$', robots_txt(timeout=86400)),
         ...
+    ]
+
+The ``robots_txt`` function returns a view which can be used to generate
+a ``robots.txt`` file containing sitemap URLs. The default sitemap only
+contains::
+
+    User-agent: *
+    Sitemap: <protocol>://<host>/sitemap.xml
+
+The list of sitemap URLs may be overridden by setting ``sitemaps``::
+
+    from django.urls import reverse_lazy
+
+    urlpatterns = [
+        url(r'^robots\.txt$', robots_txt(
+            timeout=86400,
+            sitemaps=[
+                '/sitemap.xml',
+                reverse_lazy('articles-sitemap'),
+                ...,
+            ],
+        )),
     ]
 
 

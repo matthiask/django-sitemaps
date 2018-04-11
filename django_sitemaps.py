@@ -7,6 +7,7 @@ from lxml.builder import ElementMaker
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.utils.http import http_date
+from django.views.decorators.cache import cache_page
 
 
 __all__ = ('Sitemap',)
@@ -101,3 +102,15 @@ class Sitemap(object):
         if self.all_urls_lastmod and self.lastmod is not None:
             response['Last-Modified'] = http_date(self.lastmod)
         return response
+
+
+def robots_txt(*, timeout=0, sitemaps=['/sitemap.xml']):
+    @cache_page(timeout)
+    def view(request):
+        lines = ['User-agent: *\n']
+        lines.extend(
+            'Sitemap: %s\n' % request.build_absolute_uri(str(sitemap))
+            for sitemap in sitemaps
+        )
+        return HttpResponse(''.join(lines), content_type='text/plain')
+    return view
