@@ -13,7 +13,7 @@ def read(filename):
 
 setup(
     name='django-sitemaps',
-    version='1.0.1',
+    version='1.1',
     description='',
     long_description=read('README.rst'),
     author='Matthias Kestenholz',
@@ -36,6 +36,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
