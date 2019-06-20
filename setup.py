@@ -13,7 +13,7 @@ def read(filename):
 
 setup(
     name="django-sitemaps",
-    version="1.1",
+    version="1.1.1",
     description="",
     long_description=read("README.rst"),
     author="Matthias Kestenholz",
