@@ -49,7 +49,7 @@ class Sitemap(object):
             children.append(S.lastmod(lastmod))
         else:
             self.all_urls_lastmod = False
-        if priority is not None:
+        if priority:
             children.append(S.priority(str(priority)))
 
         for code, url in alternates.items():

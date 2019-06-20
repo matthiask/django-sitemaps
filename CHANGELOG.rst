@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Fixed cases where empty priority tags were added if priority was an
+  empty string (which is always the default case with Django sitemaps).
+
 
 `1.1`_ (2018-04-11)
 ~~~~~~~~~~~~~~~~~~~
