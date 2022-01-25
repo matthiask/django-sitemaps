@@ -8,6 +8,10 @@ Change log
 - Fixed cases where empty priority tags were added if priority was an
   empty string (which is always the default case with Django sitemaps).
 - Added pre-commit, switched to a declarative setup, etc.
+- Added the possibility to specify the ``site`` and ``protocol`` directly in
+  ``add_django_sitemap``. This may be useful when having to use
+  ``django.contrib.sites`` for some third party app while still benefiting from
+  the automatic host detection of ``RequestSite`` instances.
 
 
 `1.1`_ (2018-04-11)

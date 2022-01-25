@@ -64,13 +64,16 @@ class Sitemap:
 
         self.urls.append(S.url(*children))
 
-    def add_django_sitemap(self, sitemap, *, request):
+    def add_django_sitemap(self, sitemap, *, request=None, site=None, protocol=None):
         if callable(sitemap):
             sitemap = sitemap()
 
-        for url in sitemap.get_urls(
-            site=get_current_site(request), protocol=request.scheme
-        ):
+        if site is None:
+            site = get_current_site(request)
+        if protocol is None:
+            protocol = request.scheme
+
+        for url in sitemap.get_urls(site=site, protocol=protocol):
             self.add(
                 url["location"],
                 changefreq=url.get("changefreq"),

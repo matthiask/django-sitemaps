@@ -47,6 +47,14 @@ View::
         # depend on django.contrib.sites, resp. RequestSite.
         sitemap.add_django_sitemap(PagesSitemap, request=request)
 
+        # You can also specify the site and protocol manually should you wish
+        # to do so:
+        sitemap.add_django_sitemap(
+            PagesSitemap, site=...site..., protocol=request.scheme
+        )
+        # Note! If you're omitting the request you *have* to specify site and
+        # protocol yourself.
+
         # You could get the serialized XML...
         # ... = sitemap.serialize([pretty_print=False])
         # ... or use the ``response`` helper to return a
