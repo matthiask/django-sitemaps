@@ -6,16 +6,14 @@ Change log
 ~~~~~~~~~~~~~~~
 
 
-`2.0`_ (2022-01-25)
-~~~~~~~~~~~~~~~~~~~
+`2.0.1`_ (2022-01-25)
+~~~~~~~~~~~~~~~~~~~~~
 
 - Fixed cases where empty priority tags were added if priority was an
   empty string (which is always the default case with Django sitemaps).
 - Added pre-commit, switched to a declarative setup, etc.
-- Added the possibility to specify the ``site`` and ``protocol`` directly in
-  ``add_django_sitemap``. This may be useful when having to use
-  ``django.contrib.sites`` for some third party app while still benefiting from
-  the automatic host detection of ``RequestSite`` instances.
+- Made ``add_django_sitemap`` always build URLs using ``build_absolute_uri``
+  too to avoid problems when using ``django.contrib.sites``.
 
 
 `1.1`_ (2018-04-11)
@@ -34,5 +32,5 @@ Change log
 
 .. _1.0: https://github.com/matthiask/django-sitemaps/commit/df0841349
 .. _1.1: https://github.com/matthiask/django-sitemaps/compare/1.0...1.1
-.. _2.0: https://github.com/matthiask/django-sitemaps/compare/1.1...2.0
-.. _Next version: https://github.com/matthiask/django-sitemaps/compare/2.0...main
+.. _2.0.1: https://github.com/matthiask/django-sitemaps/compare/1.1...2.0.1
+.. _Next version: https://github.com/matthiask/django-sitemaps/compare/2.0.1...main
