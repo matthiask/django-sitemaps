@@ -1,7 +1,7 @@
 from calendar import timegm
 from datetime import date
+from types import SimpleNamespace
 
-from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.utils.http import http_date
 from django.views.decorators.cache import cache_page
@@ -64,18 +64,18 @@ class Sitemap:
 
         self.urls.append(S.url(*children))
 
-    def add_django_sitemap(self, sitemap, *, request=None, site=None, protocol=None):
+    def add_django_sitemap(self, sitemap):
         if callable(sitemap):
             sitemap = sitemap()
 
-        if site is None:
-            site = get_current_site(request)
-        if protocol is None:
-            protocol = request.scheme
-
-        for url in sitemap.get_urls(site=site, protocol=protocol):
+        for url in sitemap.get_urls(site=SimpleNamespace(domain="_"), protocol="_"):
+            # Replace this with url["location"].removeprefix("_://_") when
+            # supporting only Python 3.9 or better.
+            loc = url["location"]
+            if loc.startswith("_://_"):
+                loc = loc[5:]
             self.add(
-                url["location"],
+                loc,
                 changefreq=url.get("changefreq"),
                 lastmod=url.get("lastmod"),
                 priority=url.get("priority"),
