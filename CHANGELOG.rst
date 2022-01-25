@@ -7,6 +7,7 @@ Change log
 
 - Fixed cases where empty priority tags were added if priority was an
   empty string (which is always the default case with Django sitemaps).
+- Added pre-commit, switched to a declarative setup, etc.
 
 
 `1.1`_ (2018-04-11)
@@ -25,4 +26,4 @@ Change log
 
 .. _1.0: https://github.com/matthiask/django-sitemaps/commit/df0841349
 .. _1.1: https://github.com/matthiask/django-sitemaps/compare/1.0...1.1
-.. _Next version: https://github.com/matthiask/django-sitemaps/compare/1.1...master
+.. _Next version: https://github.com/matthiask/django-sitemaps/compare/1.1...main

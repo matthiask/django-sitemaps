@@ -1,13 +1,12 @@
 from calendar import timegm
 from datetime import date
 
-from lxml import etree
-from lxml.builder import ElementMaker
-
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.utils.http import http_date
 from django.views.decorators.cache import cache_page
+from lxml import etree
+from lxml.builder import ElementMaker
 
 
 __all__ = ("Sitemap",)
@@ -26,7 +25,7 @@ X = ElementMaker(
 )
 
 
-class Sitemap(object):
+class Sitemap:
     def __init__(self, *, build_absolute_uri):
         self.urls = []
         self.build_absolute_uri = build_absolute_uri
