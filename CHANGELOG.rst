@@ -5,6 +5,8 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Converted the package to hatchling and ruff.
+
 
 `2.0.1`_ (2022-01-25)
 ~~~~~~~~~~~~~~~~~~~~~

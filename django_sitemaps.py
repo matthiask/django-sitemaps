@@ -32,7 +32,9 @@ class Sitemap:
         self.lastmod = None
         self.all_urls_lastmod = True
 
-    def add(self, loc, *, changefreq=None, lastmod=None, priority=None, alternates={}):
+    def add(
+        self, loc, *, changefreq=None, lastmod=None, priority=None, alternates=None
+    ):
         children = [S.loc(self.build_absolute_uri(loc))]
         if changefreq is not None:
             children.append(S.changefreq(changefreq))
@@ -51,7 +53,7 @@ class Sitemap:
         if priority:
             children.append(S.priority(str(priority)))
 
-        for code, url in alternates.items():
+        for code, url in (alternates or {}).items():
             children.append(
                 X.link(
                     {
@@ -99,7 +101,7 @@ class Sitemap:
         return response
 
 
-def robots_txt(*, timeout=0, sitemaps=["/sitemap.xml"]):
+def robots_txt(*, timeout=0, sitemaps=("/sitemap.xml",)):
     @cache_page(timeout)
     def view(request):
         lines = ["User-agent: *\n"]
